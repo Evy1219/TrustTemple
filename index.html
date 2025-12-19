@@ -17,18 +17,18 @@ body {
   flex-direction: column;
 }
 
-/* Falling 1s and 0s background */
+/* Background of falling 1s and 0s */
 #background {
   position: fixed;
   top: 0; left: 0; right: 0; bottom: 0;
   z-index: -1;
   background: black;
   font-family: monospace;
-  font-size: 10px;
-  opacity: 0.2;
+  font-size: 8px;
+  opacity: 0.15;
 }
 
-/* Falling code animation */
+/* Falling 1s and 0s animation */
 @keyframes fall {
   0% {transform: translateY(0);}
   100% {transform: translateY(100vh);}
@@ -57,31 +57,33 @@ body {
 /* Container for the intro animation */
 #templeContainer {
   text-align: center;
+  position: relative;
 }
 
-/* "Temple" build-up text style */
+/* Smaller title for the build-up */
 #templeText {
-  font-size: 4em;
+  font-size: 2em;
   margin-bottom: 20px;
 }
 .letter {
   display: inline-block;
   opacity: 0;
-  font-size: 4em;
+  font-size: 2em;
+  margin: 0 2px;
   animation: appear 1s forwards;
 }
 .letter:nth-child(1) { animation-delay: 0s; }
-.letter:nth-child(2) { animation-delay: 0.5s; }
-.letter:nth-child(3) { animation-delay: 1s; }
-.letter:nth-child(4) { animation-delay: 1.5s; }
-.letter:nth-child(5) { animation-delay: 2s; }
-.letter:nth-child(6) { animation-delay: 2.5s; }
+.letter:nth-child(2) { animation-delay: 0.3s; }
+.letter:nth-child(3) { animation-delay: 0.6s; }
+.letter:nth-child(4) { animation-delay: 0.9s; }
+.letter:nth-child(5) { animation-delay: 1.2s; }
+.letter:nth-child(6) { animation-delay: 1.5s; }
 
 @keyframes appear {
   to { opacity: 1; }
 }
 
-/* "Temple" shape components */
+/* Temple shape */
 #templeShape {
   width: 0; height: 0;
   border-left: 40px solid transparent;
@@ -136,33 +138,43 @@ body {
   background-color: #222;
   border: 4px solid #00FF00;
   border-radius: 8px;
+  position: relative;
   text-align: center;
 }
 
-/* Back button (stickers) */
+/* Back "X" button styled as sticker on the top-left of main box */
 #backButton {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  padding: 10px 20px;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  padding: 8px 12px;
   background-color: #00FF00;
   color: #000;
   font-family: 'Press Start 2P', cursive;
   font-size: 1em;
-  border-radius: 10px;
+  border-radius: 50%;
   box-shadow: 0 0 10px #00FF00;
   cursor: pointer;
   display: none;
   z-index: 9998;
+  width: 30px; height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Optional styling for the "X" */
+#backButton:hover {
+  box-shadow: 0 0 20px #00FF00;
 }
 </style>
 </head>
 <body>
 
-<!-- Background of 1s and 0s -->
+<!-- Background of falling 1s and 0s -->
 <div id="background"></div>
 
-<!-- Loading overlay with animation -->
+<!-- Loading overlay with animated "Temple" -->
 <div id="loading">
   <div id="templeContainer">
     <div id="templeText">
@@ -175,20 +187,17 @@ body {
     </div>
     <div id="templeShape"></div>
     <div id="templeBase"></div>
-    <!-- Enter button appears after animation -->
     <button id="enterBtn">Enter</button>
   </div>
 </div>
 
-<!-- Main page (hidden initially) -->
+<!-- Main page -->
 <div id="mainContent">
+  <button id="backButton">X</button>
   <h1>TrustTemple</h1>
   <p>Welcome to the ultimate trust platform.</p>
   <p>Built with the spirit of simplicity and retro style.</p>
 </div>
-
-<!-- Back button -->
-<button id="backButton">Back</button>
 
 <!-- Scripts -->
 <script>
@@ -199,7 +208,6 @@ body {
     span.className = 'digit';
     span.style.setProperty('--i', Math.random() * 100);
     span.textContent = Math.random() > 0.5 ? '1' : '0';
-    // Random position
     span.style.top = Math.random() * window.innerHeight + 'px';
     span.style.left = Math.random() * window.innerWidth + 'px';
     background.appendChild(span);
@@ -210,22 +218,22 @@ body {
   const enterBtn = document.getElementById('enterBtn');
   const backBtn = document.getElementById('backButton');
 
-  // Show "Enter" button after the intro animation
+  // Show "Enter" button after animation
   window.onload = () => {
     setTimeout(() => {
       document.getElementById('enterBtn').style.display = 'block';
     }, 5000); // longer delay for slower animation
   };
 
-  // Enter button click
-  enterBtn.onclick = () => {
+  // When "Enter" clicked
+  document.getElementById('enterBtn').onclick = () => {
     loading.style.display = 'none';
     mainContent.style.display = 'block';
-    backBtn.style.display = 'block';
+    backBtn.style.display = 'flex'; // show X button
   };
 
-  // Back button click
-  backBtn.onclick = () => {
+  // When "X" (Back) clicked
+  document.getElementById('backButton').onclick = () => {
     loading.style.display = 'flex';
     mainContent.style.display = 'none';
     backBtn.style.display = 'none';
