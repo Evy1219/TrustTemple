@@ -18,6 +18,45 @@
     flex-direction: column;
     min-height: 100vh;
   }
+
+  /* Overlay styles for landing screen */
+  #landing {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #222; /* dark background */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    z-index: 9999;
+  }
+
+  #title {
+    font-size: 3em;
+    color: white;
+    margin-bottom: 20px;
+    animation: float 2s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+
+  #enterBtn {
+    padding: 15px 30px;
+    font-size: 1.2em;
+    cursor: pointer;
+    border: none;
+    background-color: #497e4c;
+    color: white;
+    border-radius: 8px;
+  }
+
+  /* Existing styles */
   header {
     background-color: #009999; /* darker cyan blue */
     padding: 20px;
@@ -58,6 +97,12 @@
 </head>
 <body>
 
+<!-- Landing overlay -->
+<div id="landing" style="display: none;">
+  <div id="title">Welcome to TrustTemple</div>
+  <button id="enterBtn">Enter</button>
+</div>
+
 <header>
   <h1>TrustTemple - Welcome to the Ultimate Trust Platform</h1>
   <nav>
@@ -74,6 +119,21 @@
 <footer>
   &copy; 2025 TrustTemple
 </footer>
+
+<!-- Script to control the landing screen -->
+<script>
+  // Show overlay only if not visited this session
+  if (!sessionStorage.getItem('visited')) {
+    document.getElementById('landing').style.display = 'flex';
+  } else {
+    document.getElementById('landing').style.display = 'none';
+  }
+
+  document.getElementById('enterBtn').addEventListener('click', () => {
+    document.getElementById('landing').style.display = 'none';
+    sessionStorage.setItem('visited', 'true');
+  });
+</script>
 
 </body>
 </html>
