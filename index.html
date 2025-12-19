@@ -96,11 +96,15 @@
   font-size: 2em;
   font-family: Courier New;
 }
-/* "Who Am I" box at top */
+
+/* "Who Am I" title box */
 #topBoxContainer {
   width: 100%;
   padding: 10px 0;
   background-color: #1a1a1a;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 #topBoxContainer .title-box {
   margin: 0 auto;
@@ -111,12 +115,25 @@
   text-align: center;
   box-shadow: 0 0 15px #00FF00;
 }
-#topBoxContainer .title-box h3 {
+#topBoxContainer h3 {
   margin: 0;
   font-size: 2em;
 }
 
-/* Middle "Hello World" animation */
+/* "Who Am I" message box */
+#whoAmIBox {
+  margin-top: 10px;
+  max-width: 800px;
+  padding: 20px;
+  border-radius: 8px;
+  border: 2px solid #006400;
+  background-color: #222;
+  box-shadow: 0 0 15px #00FF00;
+  font-size: 1.2em;
+  text-align: center;
+}
+
+/* "Hello World" scrolling text in the middle */
 #helloLoopContainer {
   width: 100%;
   height: 60px;
@@ -125,6 +142,7 @@
   justify-content: center;
   background: transparent; /* no background */
   overflow: hidden;
+  margin-top: 20px;
 }
 #helloText {
   font-family: 'Orbitron', sans-serif; /* Futuristic font */
@@ -132,7 +150,7 @@
   color: #00FF00; /* Green glow */
   white-space: nowrap;
   display: inline-block;
-  animation: scrollLeft 10s linear infinite;
+  animation: scrollLeft 15s linear infinite;
 }
 @keyframes scrollLeft {
   0% {
@@ -228,17 +246,20 @@
     <h1>Trust Temple</h1>
   </div>
   
-  <!-- "Who Am I" box at top -->
+  <!-- "Who Am I" section -->
   <div id="topBoxContainer">
     <div class="title-box"><h3>Who Am I ?</h3></div>
+    <div id="whoAmIBox">
+      Hello, I am Evo. I chose this alias to simplify my name and share my journey. This website serves as my portfolio and personal showcase. I hope it resonates with the right viewers and offers insight into who I am and what I do.
+    </div>
   </div>
   
-  <!-- "Hello World" scrolling text in the middle -->
+  <!-- "Hello World" scrolling message -->
   <div id="helloLoopContainer">
-    <div id="helloText">HELLO WORLD &nbsp; HELLO WORLD &nbsp; HELLO WORLD &nbsp; HELLO WORLD &nbsp; </div>
+    <div id="helloText">HELLO WORLD &nbsp; &nbsp; HELLO WORLD &nbsp; &nbsp; HELLO WORLD &nbsp; &nbsp; HELLO WORLD &nbsp; &nbsp;</div>
   </div>
   
-  <!-- Three boxes underneath -->
+  <!-- Three boxes at the bottom -->
   <div id="middleSection">
     <div id="middleBoxes">
       <div class="section-box">
