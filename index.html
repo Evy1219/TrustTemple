@@ -133,10 +133,10 @@
   text-align: center;
 }
 
-/* Floating "HELLO WORLD" quote, positioned in the space between "Who Am I" and boxes */
+/* Floating "HELLO WORLD" quote, positioned in the space */
 #helloFloating {
   position: absolute;
-  top: 330px; /* moved further down to avoid overlap */
+  top: 330px; /* position in the space between "Who Am I" and boxes */
   left: 50%;
   transform: translateX(-50%);
   font-family: 'Orbitron', sans-serif;
@@ -148,7 +148,6 @@
   border: 2px solid #00FF00; /* borders closer to text */
   background: transparent;
   user-select: none;
-  cursor: default;
 }
 #helloFloating::before,
 #helloFloating::after {
@@ -164,7 +163,7 @@
   flex-direction: column;
   align-items: center;
   padding: 20px 0;
-  margin-top: 100px; /* space below the floating quote */
+  margin-top: 200px; /* moved further down to make space for floating quote */
 }
 #middleBoxes {
   display: grid;
@@ -252,10 +251,10 @@
     </div>
   </div>
   
-  <!-- Floating "HELLO WORLD" quote positioned in the space -->
+  <!-- Floating "HELLO WORLD" quote in the space below "Who Am I" -->
   <div id="helloFloating">"HELLO WORLD"</div>
   
-  <!-- The boxes underneath -->
+  <!-- The boxes underneath, moved further down -->
   <div id="middleSection">
     <div id="middleBoxes">
       <div class="section-box">
