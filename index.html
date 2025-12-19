@@ -122,7 +122,7 @@
   font-size: 2em; /* larger font size */
 }
 
-/* Box below "Who Am I?" for updated content with glow */
+/* Box below "Who Am I?" with glow */
 #nABoxContainer {
   width: 100%;
   display: flex;
@@ -139,21 +139,20 @@
   padding: 10px;
   font-family: 'Josefin Sans', sans-serif;
   font-size: 1em;
-  min-height: 80px; /* Ensures enough space for your text */
+  min-height: 80px;
   display: flex;
   align-items: center;
   justify-content: center;
   color: #fff;
   text-align: center;
-  box-shadow: 0 0 15px #00FF00; /* constant glow effect */
+  box-shadow: 0 0 15px #00FF00; /* glow effect */
   transition: box-shadow 0.3s ease;
 }
 
-/* Centered middle boxes in triangle style */
+/* Middle boxes in triangle style */
 #middleBoxesContainer {
   flex: 1;
   display: flex;
-  align-items: flex-start;
   justify-content: center;
   padding: 20px 0;
 }
@@ -161,10 +160,10 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 20px;
+  gap: 30px; /* space between the top and bottom row */
 }
 
-/* Top box (Inspiration's!) */
+/* Top box (Inspiration's!) in triangle style */
 #middleBoxes .top-box {
   display: flex;
   flex-direction: column;
@@ -182,10 +181,11 @@
   font-size: 2em;
 }
 
-/* Bottom row with two boxes */
+/* Bottom row with Goals and Guides boxes */
 #bottom-boxes {
   display: flex;
   gap: 20px;
+  justify-content: center;
 }
 #bottom-boxes .box {
   display: flex;
@@ -204,7 +204,7 @@
   font-size: 1.5em;
 }
 
-/* Hover glow effect for boxes */
+/* Hover glow effect for all boxes */
 .title-box {
   transition: box-shadow 0.3s ease;
 }
@@ -234,7 +234,7 @@
   transition: box-shadow 0.3s;
 }
 #backBtn:hover {
-  box-shadow: 0 0 40px #0f0; /* Slight glow on hover */
+  box-shadow: 0 0 40px #0f0;
 }
 </style>
 </head>
@@ -274,13 +274,13 @@
     <!-- Middle boxes in triangle style -->
     <div id="middleBoxesContainer">
       <div id="middleBoxes">
-        <!-- Top Inspiration box -->
+        <!-- Top Inspiration's box -->
         <div class="top-box">
           <div class="title-box">
             <h3>Inspiration's!</h3>
           </div>
         </div>
-        <!-- Bottom row with goals and guides -->
+        <!-- Bottom row with Goals and Guides -->
         <div id="bottom-boxes">
           <div class="box">
             <div class="title-box"><h3>Goals!</h3></div>
