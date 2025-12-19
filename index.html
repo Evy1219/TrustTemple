@@ -102,7 +102,7 @@
   flex-direction: column;
 }
 
-/* Top box container for "Who Am I?" */
+/* Top "Who Am I?" box */
 #topBoxContainer {
   width: 100%;
   padding: 10px 0;
@@ -120,15 +120,15 @@
   margin: 0;
 }
 
-/* Box below "Who Am I?" for input or text */
-#inputBoxContainer {
+/* Box below "Who Am I?" for n/a placeholder */
+#nABoxContainer {
   width: 100%;
   display: flex;
   justify-content: center;
   padding: 10px 0;
   background-color: #1a1a1a;
 }
-#inputBox {
+#nABox {
   max-width: 800px;
   width: 90%;
   background-color: #222;
@@ -137,10 +137,12 @@
   padding: 10px;
   font-family: 'Press Start 2P', monospace;
   font-size: 1em;
-  min-height: 80px; /* Adjust height as needed */
-  outline: none;
+  height: 80px; /* Fixed height for consistent look */
+  display: flex;
+  align-items: center;
+  justify-content: center;
   color: #fff;
-  resize: vertical;
+  text-align: center;
 }
 
 /* Centered middle boxes area */
@@ -198,11 +200,16 @@
   padding: 10px 15px;
   background: #0f0;
   border: none;
-  border-radius: 50%;
+  border-radius: 10px; /* Rounded rectangle */
+  box-shadow: 0 0 20px #0f0; /* Radiating glow */
   font-family: 'Press Start 2P';
   font-size: 0.8em;
   cursor: pointer;
   z-index: 1000;
+  transition: box-shadow 0.3s;
+}
+#backBtn:hover {
+  box-shadow: 0 0 40px #0f0; /* Slight glow on hover */
 }
 </style>
 </head>
@@ -220,7 +227,7 @@
 
 <!-- Main page -->
 <div id="mainContent">
-  <!-- Back button -->
+  <!-- Back button styled as requested -->
   <button id="backBtn">Back</button>
   <div id="header">
     <h1>Trust Temple</h1>
@@ -232,9 +239,9 @@
       <div class="title-box"><h3>Who Am I ?</h3></div>
     </div>
 
-    <!-- Box for input or text underneath "Who Am I?" -->
-    <div id="inputBoxContainer">
-      <textarea id="inputBox" placeholder="Type here..."></textarea>
+    <!-- Box with "n/a" placeholder -->
+    <div id="nABoxContainer">
+      <div id="nABox">n/a</div>
     </div>
 
     <!-- Centered middle boxes -->
@@ -300,7 +307,7 @@
       }, 50);
     }, 500);
   };
-  // Back button resets to intro
+  // Back button to restart intro
   document.getElementById('backBtn').onclick = () => {
     // Show intro again
     document.getElementById('introContainer').style.display = 'flex';
