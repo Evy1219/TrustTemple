@@ -11,13 +11,9 @@
     color: #00FF00;
     height: 100vh;
     overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
   }
 
-  /* Animate "Trust Temple" words */
+  /* Intro animation and text */
 #trustText {
   font-size: 3em;
   display: flex;
@@ -25,6 +21,9 @@
   opacity: 0;
   animation: appearText 2s forwards;
   animation-delay: 0.5s;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
 }
 #trustText span {
   opacity: 0;
@@ -41,8 +40,8 @@
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* Buttons styling */
-#enterBtn, #creditsBtn, #backBtn {
+/* Buttons styling and animation */
+button {
   margin-top: 20px;
   padding: 15px 30px;
   background: #00FF00;
@@ -53,11 +52,12 @@
   font-size: 1em;
   cursor: pointer;
   opacity: 0;
-  transition: opacity 1s;
+  transition: opacity 1s, transform 0.3s;
 }
-#enterBtn.show, #creditsBtn.show, #backBtn.show {
+button.show {
   opacity: 1;
 }
+#creditsBtn { margin-right: 20px; }
 
 /* Credits overlay styling */
 #creditsOverlay {
@@ -85,15 +85,77 @@
   font-size:1em;
   cursor:pointer;
 }
+
+/* Main page (fake main content) */
+#mainPage {
+  display: none;
+  padding: 20px;
+  max-width: 900px;
+  margin: auto;
+  background: #111;
+  border: 4px solid #00FF00;
+  border-radius: 10px;
+  height: 100vh;
+  overflow:auto;
+  transition: opacity 1s ease;
+}
+#mainPage.show {
+  display: block;
+}
+#mainPage.hidden {
+  opacity: 0;
+}
+
+/* Trust Temple info page (new) */
+#trustPage {
+  display: none;
+  padding: 20px;
+  max-width: 1000px;
+  margin: auto;
+  background: #222;
+  border: 4px solid #00FF00;
+  border-radius: 10px;
+  height: 100vh;
+  overflow:auto;
+  flex-direction: column;
+  align-items: center;
+}
+#trustPage.show {
+  display: flex;
+}
+#trustPage h1 {
+  margin-top: 0;
+}
+#backToIntroBtn {
+  position: absolute;
+  top: 10px; right: 10px;
+  padding: 10px 15px;
+  background: #00FF00;
+  color: #000;
+  border:none;
+  border-radius:50%;
+  font-family:'Press Start 2P';
+  font-size:0.8em;
+  cursor:pointer;
+}
+img {
+  max-width: 300px;
+  margin: 10px;
+  border: 2px solid #00FF00;
+  border-radius: 8px;
+}
 </style>
 </head>
 <body>
 
+<!-- Intro text for animation -->
 <div id="trustText">
   <span>T</span><span>r</span><span>u</span><span>s</span><span>t</span>
   <span> </span>
   <span>T</span><span>e</span><span>m</span><span>p</span><span>l</span><span>e</span>
 </div>
+
+<!-- Buttons -->
 <button id="enterBtn">Enter</button>
 <button id="creditsBtn">Credits</button>
 
@@ -104,8 +166,26 @@
   <button id="closeCredits">Close</button>
 </div>
 
-<!-- Back button -->
-<button id="backBtn">Back</button>
+<!-- Fake Main Content -->
+<div id="mainPage">
+  <button id="backBtn">X</button>
+  <h1>Main Content</h1>
+  <p>This is your main page content.</p>
+</div>
+
+<!-- Trust Temple Info Page -->
+<div id="trustPage">
+  <h1>Trust Temple</h1>
+  <p>Here is some interesting info about Terry A. Davis:</p>
+  <ul>
+    <li>He was a talented programmer who built TempleOS.</li>
+    <li>He believed he was guided by divine inspiration.</li>
+    <li>He was known for his unique perspective and code.</li>
+  </ul>
+  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7b/Terry_A._Davis_2012.jpg/220px-Terry_A._Davis_2012.jpg" alt="Terry A. Davis" />
+  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/TempleOS_logo.png/220px-TempleOS_logo.png" alt="TempleOS Logo" />
+  <button id="backToIntroBtn">Back</button>
+</div>
 
 <script>
   // Animate "Trust Temple" words
@@ -119,25 +199,37 @@
     document.getElementById('creditsBtn').classList.add('show');
   }, 3000);
 
-  // "Enter" button - go to main page (here, just alert or you can redirect)
-  document.getElementById('enterBtn').onclick = () => {
-    alert("Welcome to the main page! (Implement navigation as needed)");
-  };
-
-  // "Credits" button - show credits overlay
+  // Show credits overlay
   document.getElementById('creditsBtn').onclick = () => {
-    document.getElementById('creditsOverlay').style.display = 'flex';
+    document.getElementById('creditsOverlay').style.display='flex';
   };
-
-  // Close credits overlay
   document.getElementById('closeCredits').onclick = () => {
     document.getElementById('creditsOverlay').style.display='none';
   };
 
-  // "Back" button - go back to intro (here, just alert or reset)
+  // When "Enter" clicked, show the "Trust Temple" info page
+  document.getElementById('enterBtn').onclick = () => {
+    document.getElementById('trustText').style.display='none';
+    document.getElementById('enterBtn').style.display='none';
+    document.getElementById('creditsBtn').style.display='none';
+
+    document.getElementById('trustPage').classList.add('show');
+  };
+
+  // Back button in Trust Temple info page
+  document.getElementById('backToIntroBtn').onclick = () => {
+    document.getElementById('trustPage').classList.remove('show');
+    // Show intro again
+    document.getElementById('trustText').style.display='flex';
+    document.getElementById('enterBtn').style.display='block';
+    document.getElementById('creditsBtn').style.display='block';
+  };
+
+  // "Back" in main page (optional)
   document.getElementById('backBtn').onclick = () => {
-    alert("Back to intro (implement as needed)");
+    alert("Back to intro or main page");
   };
 </script>
+
 </body>
 </html>
