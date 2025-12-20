@@ -92,6 +92,7 @@
   background-color: #006400;
   padding: 20px;
   text-align: center;
+  position: relative; /* Added for clock positioning */
 }
 #header h1 {
   margin: 0;
@@ -99,52 +100,40 @@
   font-family: Courier New;
 }
 
-/* Top navigation area */
-#topNav {
-  position: absolute;
-  top: 20px;
-  left: 20px;
-  right: 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  z-index: 100;
-}
-
-/* World Clock Container */
+/* World Clock Container - Inside Header */
 #worldClock {
   position: absolute;
-  top: 20px;
+  top: 50%;
   right: 20px;
+  transform: translateY(-50%);
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  gap: 5px;
-  z-index: 100;
+  gap: 3px;
 }
 
 #clockTime {
   font-family: 'Share Tech Mono', monospace;
-  font-size: 1.2em;
+  font-size: 1em;
   color: #00FF00;
   background-color: rgba(0, 0, 0, 0.7);
-  padding: 8px 15px;
-  border-radius: 8px;
-  border: 2px solid #00FF00;
-  box-shadow: 0 0 10px #00FF00;
-  text-shadow: 0 0 5px #00FF00;
+  padding: 5px 10px;
+  border-radius: 6px;
+  border: 1px solid #00FF00;
+  box-shadow: 0 0 8px #00FF00;
+  text-shadow: 0 0 4px #00FF00;
   letter-spacing: 1px;
 }
 
 #clockDate {
   font-family: 'Orbitron', sans-serif;
-  font-size: 0.9em;
+  font-size: 0.7em;
   color: #00FF00;
   background-color: rgba(0, 0, 0, 0.7);
-  padding: 6px 12px;
-  border-radius: 6px;
+  padding: 4px 8px;
+  border-radius: 4px;
   border: 1px solid #00FF00;
-  box-shadow: 0 0 8px #00FF00;
+  box-shadow: 0 0 6px #00FF00;
   text-shadow: 0 0 3px #00FF00;
   letter-spacing: 0.5px;
 }
@@ -397,16 +386,14 @@
 
 <!-- Main page -->
 <div id="mainContent">
-  <div id="topNav">
-    <button id="backBtn">Back</button>
+  <button id="backBtn">Back</button>
+  
+  <div id="header">
+    <h1>Trust Temple</h1>
     <div id="worldClock">
       <div id="clockTime">EST: 00:00:00</div>
       <div id="clockDate">January 1, 2023</div>
     </div>
-  </div>
-  
-  <div id="header">
-    <h1>Trust Temple</h1>
   </div>
   
   <!-- "Who Am I" section -->
