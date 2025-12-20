@@ -215,16 +215,45 @@
 .content-box {
   background-color: #1a1a1a;
   padding: 15px;
-  border-radius: 8px;
-  border: 2px solid #006400;
   min-height: 60px;
   display: flex;
   align-items: center;
   justify-content: center;
+  
+  /* Grey notched borders - same style as "Who Am I" title box */
+  position: relative;
+  border: 2px solid #666; /* Grey border */
+  box-shadow: 0 0 10px #666; /* Grey glow */
 }
 .content-box p {
   margin: 0;
 }
+
+/* Grey notched corners for content boxes */
+.content-box::before,
+.content-box::after {
+  content: '';
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  border: 2px solid #888; /* Grey corner accents */
+  background: #1a1a1a;
+}
+
+.content-box::before {
+  top: -10px;
+  left: -10px;
+  border-right: none;
+  border-bottom: none;
+}
+
+.content-box::after {
+  bottom: -10px;
+  right: -10px;
+  border-left: none;
+  border-top: none;
+}
+
 #footer {
   background-color: #006400;
   padding: 15px;
