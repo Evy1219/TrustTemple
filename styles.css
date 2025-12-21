@@ -1,3 +1,48 @@
+/* TRUST THE TEMPLE banner under header */
+#trustTempleBanner {
+  display: block;
+  width: 100%;
+  max-width: 100vw;
+  margin: 18px auto 18px auto;
+  text-align: center;
+  font-family: 'Orbitron', 'Share Tech Mono', monospace;
+  font-weight: 900;
+  font-size: clamp(1.5rem, 5vw, 3.2rem);
+  color: #00FF00;
+  letter-spacing: 0.13em;
+  text-shadow: 0 0 24px #00FF00, 0 0 6px #000;
+  line-height: 1.05;
+  z-index: 1000;
+  position: relative;
+  user-select: none;
+  overflow-x: clip;
+}
+/* Animated HELLO WORLD airport display */
+#helloWorldsContainer {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 0;
+  pointer-events: none;
+  z-index: 20;
+}
+.helloWorldAnimated {
+  position: absolute;
+  left: -300px;
+  top: 498px;
+  font-family: 'Orbitron', 'Share Tech Mono', monospace;
+  font-size: 2.1em;
+  color: #00FF00;
+  text-shadow: 0 0 12px #00FF00, 0 0 2px #000;
+  white-space: nowrap;
+  letter-spacing: 2px;
+  user-select: none;
+  pointer-events: none;
+  opacity: 0.92;
+  transition: transform 8.5s linear;
+  will-change: transform;
+}
 body {
   margin: 0;
   padding: 0;
@@ -86,9 +131,28 @@ body {
 }
 #header {
   background-color: #006400;
-  padding: 20px;
+  padding: 20px 90px;
   text-align: center;
-  position: relative; /* Added for clock positioning */
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 60px;
+}
+.header-symbol {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 60px;
+  width: 60px;
+  filter: drop-shadow(0 0 12px #00FF00cc);
+}
+.left-symbol {
+  margin-right: 32px;
+}
+.right-symbol {
+  margin-left: 32px;
+
 }
 #header h1 {
   margin: 0;
@@ -153,7 +217,7 @@ body {
 #topBoxContainer {
   width: 100%;
   padding: 10px 0;
-  background-color: #1a1a1a;
+  background-color: #0f0f0f;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -250,10 +314,10 @@ body {
 
 /* Specific lines for above and below "HELLO WORLD" */
 #topLine {
-  top: 317px; /* position above the text, adjust as needed */
+  top: 457px; /* moved further down to avoid overlap */
 }
 #bottomLine {
-  top: 400px; /* position below the text, adjust as needed */
+  top: 540px; /* moved further down to avoid overlap */
 }
 /* Animate scrolling for the main content boxes */
 #middleSection {
@@ -392,6 +456,7 @@ body {
 #backBtn:hover {
   box-shadow: 0 0 40px #0f0;
 }
-h1, h2, h3, h4, h5, h6, p, span, div, button, a {
+ h1, h2, h3, h4, h5, h6, p, span, div, button, a {
   transform-origin: inherit;
 }
+  
