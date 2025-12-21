@@ -3,7 +3,7 @@ html {
 }
 body {
   min-height: 100vh;
-  display: flex;
+  display: absolute;
   flex-direction: column;
 }
 /* Page footer styles */
@@ -661,13 +661,13 @@ body {
 }
 #backBtn {
   position: absolute;
-  top: 20px;
+  top: 75px;
   left: 20px;
   padding: 10px 15px;
   background: #0f0;
   border: none;
   border-radius: 10px;
-  box-shadow: 0 0 20px #0f0;
+  box-shadow: 0 0 20px rgb(0, 255, 0);
   font-family: 'Press Start 2P';
   font-size: 0.8em;
   z-index: 100;
