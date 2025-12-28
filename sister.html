@@ -4,56 +4,114 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>My Biggest Inspiration - Trust Temple</title>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet" />
+  
+  <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&display=swap" rel="stylesheet" />
+  
   <link rel="stylesheet" href="styles.css" />
+  <style>
+    .sister-image {
+      max-width: 300px;
+      width: 100%;
+      border-radius: 12px;
+      border: 3px solid var(--color-terminal-green);
+      box-shadow: 0 0 30px rgba(0, 255, 65, 0.5);
+      margin: 0 auto 2rem;
+      display: block;
+    }
+    
+    .heart-section {
+      margin-top: 2rem;
+      padding: 2rem;
+      background: rgba(0, 255, 65, 0.05);
+      border: 2px solid var(--color-terminal-green);
+      border-radius: 8px;
+      text-align: center;
+    }
+    
+    .heart-icon {
+      font-size: 3rem;
+      color: var(--color-terminal-green);
+      animation: heartBeat 2s ease infinite;
+      display: inline-block;
+    }
+    
+    @keyframes heartBeat {
+      0%, 100% { transform: scale(1); }
+      10%, 30% { transform: scale(1.1); }
+      20%, 40% { transform: scale(1); }
+    }
+    
+    @media (max-width: 768px) {
+      .sister-image {
+        max-width: 100%;
+      }
+    }
+  </style>
 </head>
 <body>
-  <div id="mainContent" class="show">
-    <button id="backBtn">Back to Home</button>
-    <div id="header">
-      <h1>My Biggest Inspiration</h1>
-      <div id="worldClock">
-        <div id="clockTime">EST: 00:00:00</div>
-        <div id="clockDate">January 1, 2023</div>
-      </div>
+
+<div id="mainContent" class="show">
+  <div id="scanlines"></div>
+  <div id="crt-effect"></div>
+  
+  <!-- Navigation -->
+  <nav id="topNav">
+    <button id="backBtn" class="nav-btn">
+      <span class="btn-icon">◄</span>
+      <span class="btn-text">BACK TO HOME</span>
+    </button>
+  </nav>
+
+  <!-- Header -->
+  <header id="header">
+    <h1 class="main-title">
+      <span class="title-line-1">MY BIGGEST</span>
+      <span class="title-line-2">INSPIRATION</span>
+    </h1>
+    
+    <!-- World Clock -->
+    <div id="worldClock">
+      <div id="clockTime">EST: <span id="hours">00</span>:<span id="minutes">00</span>:<span id="seconds">00</span></div>
+      <div id="clockDate">LOADING...</div>
     </div>
-    <div id="topBoxContainer">
-      <div class="title-box" id="sisterTitleBox"><h3>My Biggest Inspiration</h3></div>
-      <div id="whoAmIBox" style="display: flex; align-items: flex-start; gap: 24px;">
-        <img src="images.jpg" alt="My Sister" style="max-width:180px; border-radius:14px; box-shadow:0 0 12px #00FF00; margin-right:12px; object-fit:cover; float:right;">
-        <p style="font-size:1.1em; margin:0;">My biggest inspiration is my sister. It took me to learn about myself in life by using this website and finding my true passion for computer science to realize that my sister has been my biggest inspiration in life and no one will ever compare her to the mental and physical love that helped shape me as a human and father. Thank you for being my biggest inspiration and keep in mind the fact that once I fully compile my website that true detail will be put into everything, including this page. But for now, this is what you will understand about me.</p>
+  </header>
+
+  <!-- Main Section -->
+  <main id="mainSection">
+    <section class="content-card featured-card">
+      <div class="card-header">
+        <h2>MY SISTER</h2>
       </div>
+      <div class="card-body">
+        <img src="images.jpg" alt="My Sister" class="sister-image" />
+        
+        <p><strong>My biggest inspiration is my sister.</strong> It took me learning about myself in life - using this website and finding my true passion for computer science - to realize that my sister has been my biggest inspiration all along.</p>
+        
+        <p>No one will ever compare to the mental and physical love that helped shape me as a human and father. Her influence on my life cannot be overstated.</p>
+        
+        <div class="heart-section">
+          <div class="heart-icon">♥</div>
+          <p><strong>Thank you for being my biggest inspiration.</strong></p>
+          <p>Keep in mind that once I fully compile my website, true detail will be put into everything, including this page. But for now, this is what you need to understand about me.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-content">
+      <span>© 2025 TRUST TEMPLE. ALL RIGHTS RESERVED.</span>
+      <span class="separator">|</span>
+      <span>MADE WITH EVO'S BRAIN.</span>
     </div>
-  </div>
-  <script>
-    document.getElementById('backBtn').onclick = function() {
-      localStorage.setItem('skipIntro', 'true');
-      window.location.href = 'index.html';
-    };
-    function updateWorldClock() {
-      const now = new Date();
-      const estOffset = -5;
-      const estTime = new Date(now.getTime() + (estOffset * 60 * 60 * 1000));
-      const hours = estTime.getUTCHours().toString().padStart(2, '0');
-      const minutes = estTime.getUTCMinutes().toString().padStart(2, '0');
-      const seconds = estTime.getUTCSeconds().toString().padStart(2, '0');
-      const options = { year: 'numeric', month: 'long', day: 'numeric' };
-      const dateStr = estTime.toLocaleDateString('en-US', options);
-      const colon = seconds % 2 === 0 ? ':' : '<span class="blink">:</span>';
-      document.getElementById('clockTime').innerHTML = `EST: ${hours}${colon}${minutes}${colon}${seconds}`;
-      document.getElementById('clockDate').textContent = dateStr;
-    }
-    updateWorldClock();
-    setInterval(updateWorldClock, 1000);
-  </script>
-</body>
-<footer class="page-footer">
-  <div class="footer-content">
-    <span>&copy; 2025 Trust Temple. All rights reserved.</span>
-    <span style="margin-left:18px;">Made with Evos brain.</span>
-  </div>
-</footer>
+  </footer>
+</div>
+
+<script src="script.js"></script>
+
 </body>
 </html>
