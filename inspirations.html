@@ -1,110 +1,149 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Inspirations - Trust Temple</title>
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet" />
-<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet" />
-<link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="styles.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Inspirations - Trust Temple</title>
+  
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&display=swap" rel="stylesheet" />
+  
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .inspiration-icon {
+      width: 80px;
+      height: 80px;
+      margin: 0 auto 1rem;
+      display: block;
+      filter: drop-shadow(0 0 15px var(--color-terminal-green));
+      animation: iconPulse 3s ease infinite;
+    }
+    
+    @keyframes iconPulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+    }
+    
+    .quote-section {
+      margin-top: 2rem;
+      padding: 1.5rem;
+      background: rgba(0, 255, 65, 0.05);
+      border-left: 4px solid var(--color-terminal-green);
+      font-style: italic;
+    }
+    
+    .quote-text {
+      font-size: 1.1rem;
+      color: var(--color-terminal-bright);
+      margin-bottom: 0.5rem;
+    }
+    
+    .quote-author {
+      text-align: right;
+      color: var(--color-terminal-green);
+      font-weight: 700;
+    }
+  </style>
 </head>
 <body>
 
-
-<img src="images2.jpg.png" alt="Side Image" class="side-image left-image">
-<img src="images2.jpg.png" alt="Side Image" class="side-image right-image">
-
 <div id="mainContent" class="show">
-  <button id="backBtn">Back to Home</button>
-  <div id="header">
-    <h1>Inspirations Page</h1>
+  <div id="scanlines"></div>
+  <div id="crt-effect"></div>
+  
+  <!-- Navigation -->
+  <nav id="topNav">
+    <button id="backBtn" class="nav-btn">
+      <span class="btn-icon">◄</span>
+      <span class="btn-text">BACK TO HOME</span>
+    </button>
+  </nav>
+
+  <!-- Header -->
+  <header id="header">
+    <h1 class="main-title">
+      <span class="title-line-1">MY</span>
+      <span class="title-line-2">INSPIRATIONS</span>
+    </h1>
+    
+    <!-- World Clock -->
     <div id="worldClock">
-      <div id="clockTime">EST: 00:00:00</div>
-      <div id="clockDate">January 1, 2023</div>
+      <div id="clockTime">EST: <span id="hours">00</span>:<span id="minutes">00</span>:<span id="seconds">00</span></div>
+      <div id="clockDate">LOADING...</div>
     </div>
-  </div>
-  <div id="topBoxContainer">
-    <div class="title-box"><h3>My Inspirations</h3></div>
-    <div id="whoAmIBox">
-      <div class="inspiration-section" style="margin-bottom: 32px;">
-        <div style="display:flex; flex-direction:column; align-items:center;">
-          <svg width="48" height="32" viewBox="0 0 48 32" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin-bottom:-4px;">
-            <!-- Radiating lines -->
-            <g>
-              <line x1="24" y1="2" x2="24" y2="10" stroke="#00FF00" stroke-width="2" stroke-linecap="round"/>
-              <line x1="12" y1="6" x2="8" y2="2" stroke="#00FF00" stroke-width="2" stroke-linecap="round"/>
-              <line x1="36" y1="6" x2="40" y2="2" stroke="#00FF00" stroke-width="2" stroke-linecap="round"/>
-            </g>
-            <polygon points="4,28 12,10 24,24 36,10 44,28" stroke="#00FF00" stroke-width="3" fill="none"/>
-            <circle cx="12" cy="10" r="3" fill="#00FF00"/>
-            <circle cx="24" cy="24" r="3" fill="#00FF00"/>
-            <circle cx="36" cy="10" r="3" fill="#00FF00"/>
-          </svg>
-          <h3 style="color:#00FF00; margin-top:0; margin-bottom:8px; text-align:center;">My Dad</h3>
-          <div class="glow-box" style="margin-top:8px; text-align:center;">
-            <p style="font-size:1.1em; margin:0;">The person who is truly subconsciously shaping me as a man and father is my own father. If it weren't for him, I wouldn't have as much knowledge about basic life necessities and responsibilities. He also was the person to introduce me to the computer world and everything I do from a singular keystroke gives me a reminder of where and who helped me get where I am. Thank you Dad. I love you.</p>
-          </div>
-          <div id="spockQuotes" class="spock-quotes" style="margin-top:36px;"></div>
-          <div class="animated-green-line" style="margin:32px auto 0 auto;"></div>
+  </header>
+
+  <!-- Main Section -->
+  <main id="mainSection">
+    <!-- Dad -->
+    <section class="content-card featured-card">
+      <div class="card-header">
+        <h2>MY DAD</h2>
+      </div>
+      <div class="card-body">
+        <svg class="inspiration-icon" viewBox="0 0 48 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <line x1="24" y1="2" x2="24" y2="10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          <line x1="12" y1="6" x2="8" y2="2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          <line x1="36" y1="6" x2="40" y2="2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          <polygon points="4,28 12,10 24,24 36,10 44,28" stroke="currentColor" stroke-width="3" fill="none"/>
+          <circle cx="12" cy="10" r="3" fill="currentColor"/>
+          <circle cx="24" cy="24" r="3" fill="currentColor"/>
+          <circle cx="36" cy="10" r="3" fill="currentColor"/>
+        </svg>
+        <p><strong>The person who is truly subconsciously shaping me as a man and father is my own father.</strong> If it weren't for him, I wouldn't have as much knowledge about basic life necessities and responsibilities.</p>
+        <p>He was the person to introduce me to the computer world and everything I do from a singular keystroke gives me a reminder of where and who helped me get where I am.</p>
+        <div class="quote-section">
+          <div class="quote-text">"Thank you Dad. I love you."</div>
+          <div class="quote-author">- Evo</div>
         </div>
       </div>
+    </section>
+
+    <!-- Terry A. Davis -->
+    <section class="content-card">
+      <div class="card-header">
+        <h3>TERRY A. DAVIS</h3>
+      </div>
+      <div class="card-body">
+        <p><strong>A brilliant programmer and creator of TempleOS</strong>, Terry A. Davis represents unwavering dedication to a singular vision. His work ethic, technical brilliance, and uncompromising pursuit of his goals inspire me daily.</p>
+        <p>He built an entire operating system from scratch - a testament to what one person can achieve with focus and determination.</p>
+      </div>
+    </section>
+
+    <!-- Ricky A. Kasso -->
+    <section class="content-card">
+      <div class="card-header">
+        <h3>RICKY A. KASSO</h3>
+      </div>
+      <div class="card-body">
+        <p>An inspiration that reminds me of the importance of understanding the darker aspects of human nature and the consequences of our choices.</p>
+      </div>
+    </section>
+
+    <!-- Additional Inspirations -->
+    <section class="content-card">
+      <div class="card-header">
+        <h3>THE HACKER ETHOS</h3>
+      </div>
+      <div class="card-body">
+        <p>The philosophy of exploration, creativity, and pushing boundaries. The belief that information should be free, that curiosity is sacred, and that systems should be understood at their deepest levels.</p>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-content">
+      <span>© 2025 TRUST TEMPLE. ALL RIGHTS RESERVED.</span>
+      <span class="separator">|</span>
+      <span>MADE WITH EVO'S BRAIN.</span>
     </div>
-  </div>
-
+  </footer>
 </div>
-<footer class="page-footer">
-  <div class="footer-content">
-    <span>&copy; 2025 Trust Temple. All rights reserved.</span>
-    <span style="margin-left:18px;">Made with Evos brain.</span>
-  </div>
-</footer>
-<script>
 
-// Animated Spock quotes
-const spockQuotesArr = [
-  {quote: "Live long and prosper.", who: "Spock"},
-  {quote: "Insufficient facts always invite danger.", who: "Spock"},
-  {quote: "Change is the essential process of all existence.", who: "Spock"},
-  {quote: "Logic is the beginning of wisdom, not the end.", who: "Spock"},
-  {quote: "The needs of the many outweigh the needs of the few.", who: "Spock"},
-  {quote: "I have been, and always shall be, your friend.", who: "Spock"},
-  {quote: "After a time, you may find that having is not so pleasing a thing after all as wanting.", who: "Spock"}
-];
-let quoteIdx = 0;
-function showSpockQuote() {
-  const quoteDiv = document.getElementById('spockQuotes');
-  if (!quoteDiv) return;
-  const q = spockQuotesArr[quoteIdx];
-  quoteDiv.innerHTML = `<span class="spock-quote">“${q.quote}”</span><span class="spock-who"> - ${q.who}</span>`;
-  quoteDiv.classList.remove('fade-in');
-  void quoteDiv.offsetWidth; // trigger reflow for animation
-  quoteDiv.classList.add('fade-in');
-  quoteIdx = (quoteIdx + 1) % spockQuotesArr.length;
-}
-showSpockQuote();
-setInterval(showSpockQuote, 5200);
-// Add Vulcan Salute SVGs to each side
+<script src="script.js"></script>
 
-  document.getElementById('backBtn').onclick = function() {
-    localStorage.setItem('skipIntro', 'true');
-    window.location.href = 'index.html';
-  };
-  function updateWorldClock() {
-    const now = new Date();
-    const estOffset = -5;
-    const estTime = new Date(now.getTime() + (estOffset * 60 * 60 * 1000));
-    const hours = estTime.getUTCHours().toString().padStart(2, '0');
-    const minutes = estTime.getUTCMinutes().toString().padStart(2, '0');
-    const seconds = estTime.getUTCSeconds().toString().padStart(2, '0');
-    const options = { year: 'numeric', month: 'long', day: 'numeric' };
-    const dateStr = estTime.toLocaleDateString('en-US', options);
-    const colon = seconds % 2 === 0 ? ':' : '<span class="blink">:</span>';
-    document.getElementById('clockTime').innerHTML = `EST: ${hours}${colon}${minutes}${colon}${seconds}`;
-    document.getElementById('clockDate').textContent = dateStr;
-  }
-  updateWorldClock();
-  setInterval(updateWorldClock, 1000);
-</script>
 </body>
 </html>
